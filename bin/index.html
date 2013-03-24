@@ -37,44 +37,128 @@
 	 	 
 	 <!-- Begin jracer -->
   <div id='instructions'>
-    <p>Hum like an engine to drive. Use the <b>arrow keys</b> to steer.</p>
+    <p style="text-align: center">Hum like an engine to drive.<br/> Use the <b>arrow keys</b> to steer.</p>
   </div>
 
   <div id="racer">
     <div id="hud">
       <span id="speed"            class="hud"><span id="speed_value" class="value">0</span> mph</span>
       <span id="current_lap_time" class="hud">Time: <span id="current_lap_time_value" class="value">0.0</span></span> 
-      <span id="last_lap_time"    class="hud">Last Lap: <span id="last_lap_time_value" class="value">0.0</span></span>
-      <span id="fast_lap_time"    class="hud">Fastest Lap: <span id="fast_lap_time_value" class="value">0.0</span></span>
     </div>
     <canvas id="canvas">
       Sorry, this example cannot be run because your browser does not support the &lt;canvas&gt; element
     </canvas>
     Loading...
   </div>
+	<div id="lap_complete_screen" class="text_screen">
+		<div style="width: 60%; margin: 20px auto; height: 100px">
+			Congratulations, you completed the lap in <span id="lap_time">999.99</span> seconds!<br/>
+		</div>
+		<div id="hiscore_register" style="width: 60%; margin: 10px auto;">
+			<p>You earned your place in the local hall of fame!</p>
+			<p>Enter your name: <input type="text" name="player" id="player_name" style="font-size: 30px; height: 35px; width: 300px; border: 1px solid black;" onkeypress="if (DIRECTOR.scene.playerNameKeypress) DIRECTOR.scene.playerNameKeypress(event)"/></p>
+		</div>
+		<div style="width:100%; text-align: center; margin: 30px;">
+			<button id="ok_lap" onclick="DIRECTOR.scene.ok()" default="true">OK!</button>
+		</div>
+	</div>
+	<div id="help_screen" class="text_screen">
+		<div style="text-align: center; width: 70%; margin: 70px auto;">
+			Hum like an engine to drive.<br/> Use the <b>arrow keys</b> to steer. <br/>Have fun.<br/><br/>
+			<button id="ok_help" onclick="DIRECTOR.popScene(HelpScreen)" default="true">OK!</button>
+		</div>
+	</div>
+	<div id="hiscore_screen" class="text_screen" style="color: white;">
+		<div style="margin-top: 50px; text-align: center; font-size: 50px; font-weight: bold;">High scores</div>
+		<div style="width: 90%; margin-left: auto;">
+			<div style="float:left; width: 25%; margin: 20px 10px">
+				<div style="width: 100%; text-align: center; padding: 10 20 10 20; font-size: 30px;">Short track</div>
+				<div style="width: 100%; text-align: left; border-top: 1px solid white; padding: 20 20 20 60; font-size: 25px;">
+					<table border="0" cellspacing="20px" cellpadding="20px" style="color:white">
+						<thead>
+						<tr><td style="width: 100px"></td></td></tr>
+						</thead>
+						<tbody id="hiscore_0">
+						<tr><td>A</td><td>1.23</td></tr>
+						<tr><td>A</td><td>1.23</td></tr>
+						<tr><td>A</td><td>1.23</td></tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div style="float:left; width: 25%; margin: 20px 10px; border-right: 1px solid white; border-left: 1px solid white;">
+				<div style="width: 100%; text-align: center; padding: 10 20 10 20; font-size: 30px;">Medium track</div>
+				<div style="width: 100%; text-align: left; border-top: 1px solid white; padding: 20 20 20 60; font-size: 25px;">
+					<table border="0" cellspacing="20px" cellpadding="20px" style="color:white">
+						<thead>
+						<tr><td style="width: 100px"></td></td></tr>
+						</thead>
+						<tbody id="hiscore_1">
+						<tr><td>A</td><td>1.23</td></tr>
+						<tr><td>A</td><td>1.23</td></tr>
+						<tr><td>A</td><td>1.23</td></tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div style="float:left; width: 25%; margin: 20px 10px">
+				<div style="width: 100%; text-align: center; padding: 10 20 10 20; font-size: 30px;">Long track</div>				
+				<div style="width: 100%; text-align: left; border-top: 1px solid white; padding: 20 20 20 60; font-size: 25px;">
+					<table border="0" cellspacing="20px" cellpadding="20px" style="color:white">
+						<thead>
+						<tr><td style="width: 100px"></td></td></tr>
+						</thead>
+						<tbody id="hiscore_2">
+						<tr><td>A</td><td>1.23</td></tr>
+						<tr><td>A</td><td>1.23</td></tr>
+						<tr><td>A</td><td>1.23</td></tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div style="clear: both;"></div>
+		<div style="text-align: center; margin-top: 50px;">
+			<button id="ok_hiscore" onclick="DIRECTOR.popScene(HiscoreScreen)" default="true">OK!</button>
+			<button id="reset_hiscore" onclick="if (DIRECTOR.scene.resetHiscore) DIRECTOR.scene.resetHiscore()" default="true">Reset</button>			
+		</button>
+	</div>
 
-  <script src="js/stats.js"></script>
-  <script src="js/common.js"></script>
-  <script src="js/game.js"></script>
-  <script src="js/jracer.js"></script>
-  <!-- end jracer -->
-  
-  <span id="fullscreen"></span>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-  <script src="js/jquery.fullscreen-min.js"></script>
-    <script>
-    $('#fullscreen').click(function(e){
-      $(document).toggleFullScreen();
-    });
-
-	var gd = new GameDirector();
-	var scene = new JRacerScene();
-
-	GameUtil.loadImages("images_tll", ["background", "sprites"], function(images) {		
-		scene.setImages(images[0], images[1]);
-		gd.run(scene);
-	});
+	<script src="js/stats.js"></script>
+	<script src="js/common.js"></script>
+	<script src="js/game.js"></script>
+	<script src="js/jracer.js"></script>
+	<script src="js/menu.js"></script>
+	<script src="js/help.js"></script>
+	<script src="js/hiscores.js"></script>
+	<script src="js/lapcomplete.js"></script>
 	
-  </script>
+	<span id="fullscreen"></span>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+	<script src="js/jquery.fullscreen-min.js"></script>
+	<script>
+		$('#fullscreen').click(function(e){
+		  $(document).toggleFullScreen();
+		});
+
+		$(document).ready(function() {
+			var gd = new GameDirector();
+			window.DIRECTOR = gd;
+			GameUtil.loadImages("images_tll", ["background", "sprites", "menu"], function(images) {	
+				window.IMAGES = images;
+				var menuScreen = new MenuScreen(640, 480);
+				menuScreen.setImages(images[2]);
+				gd.run(menuScreen);
+			});
+		});
+
+	</script>
+
+  <audio id="ding" src="sounds/ding.wav" preload="true"></audio>
+  <audio id="click" src="sounds/click.wav" preload="true"></audio>
+  <audio id="starter" src="sounds/starter.wav" preload="true"></audio>
+  <audio id="v0" src="sounds/100-200.wav" preload="true"></audio>
+  <audio id="v1" src="sounds/200-400.wav" preload="true"></audio>
+  <audio id="v2" src="sounds/300-600.wav" preload="true"></audio>
  </body>
  </html>

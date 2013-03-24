@@ -17,15 +17,29 @@ if (!window.requestAnimationFrame) {
  */
 function GameDirector(canvas, fps) {
 	var self = this;
-	this.canvas = canvas || Dom.get('canvas');
+	canvas = this.canvas = canvas || Dom.get('canvas');
 	this.ctx  = this.canvas.getContext('2d');
 	this.fps = fps || 60;
+	this.sceneStack = [];
 	
 	this.switchToScene = function(newScene) {
 		if (this.scene) this.scene.exit(this);
 		this.scene = newScene;
 		if (this.scene) this.scene.enter(this);
 	}
+	
+	this.pushScene = function(newScene) {
+		if (this.scene) {
+			this.sceneStack.push(this.scene);
+		}
+		this.switchToScene(newScene);
+	}
+	
+	this.popScene = function(sceneType) {
+		if (sceneType && this.scene && !(this.scene instanceof sceneType))
+			return;
+		this.switchToScene(this.sceneStack.pop());
+	}			
 	
 	this.run = function(scene) {
 		var now = Util.timestamp();
@@ -51,6 +65,15 @@ function GameDirector(canvas, fps) {
 		animationLoop();
 	}
 
-    Dom.on(document, 'keydown', function(ev) { if (self.scene) scene.keyDown(ev.keyCode); } );
-    Dom.on(document, 'keyup',   function(ev) { if (self.scene) scene.keyUp(ev.keyCode);   } );	
+	function getMousePos(canvas, evt) {
+        var rect = canvas.getBoundingClientRect();
+        return {
+          x: (evt.clientX - rect.left)/canvas.offsetWidth*canvas.width,
+          y: (evt.clientY - rect.top)/canvas.offsetHeight*canvas.height
+        };
+    }
+    Dom.on(document, 'keydown', function(ev) { if (self.scene && self.scene.keyDown) self.scene.keyDown(ev.keyCode); } );
+    Dom.on(document, 'keyup',   function(ev) { if (self.scene && self.scene.keyUp) self.scene.keyUp(ev.keyCode);  } );	
+	Dom.on(document, 'mousemove', function(ev) { if (self.scene && self.scene.mouseMove) self.scene.mouseMove(getMousePos(canvas, ev)); } );
+	Dom.on(document, 'click', function(ev) { if (self.scene && self.scene.click) self.scene.click(getMousePos(canvas, ev)); } );
 }

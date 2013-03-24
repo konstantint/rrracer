@@ -35,6 +35,7 @@ package
 			// Link with external interface
 			var eint: ExternalInterfaceHelper = new ExternalInterfaceHelper(null);
 			eint.addCallback("getPitch", function():Number { return m_currentPitch; } );
+			eint.addCallback("setCutoffLevel", function(val:Number):void { m_pitch.setCutoffLevel(val); } );
 			
 			// Ensure microphone is enabled
 			var settingsDialogChecker: SettingsScreenVisibilityChecker = new SettingsScreenVisibilityChecker(stage);

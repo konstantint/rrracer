@@ -19,6 +19,13 @@ function getPitch() {
 	else return -1;
 }
 
+function setCutoffLevel(newLevel) {
+	if (getSoundSensor().setCutoffLevel) {
+		getSoundSensor().setCutoffLevel(newLevel);
+	}
+	else console.log("setCutoffLevel interface not found!");
+}
+
 function hideFlashOverlay() {
 	document.getElementById("flashOverlay").style.display = 'none';
 	document.getElementById("SoundSensor").style.left = -300;

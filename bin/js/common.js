@@ -276,7 +276,11 @@ var KEY = {
   A:     65,
   D:     68,
   S:     83,
-  W:     87
+  W:     87,
+  T:	 84,
+  F:     70,
+  ENTER: 13,
+  ESCAPE: 27,
 };
 
 var COLORS = {
