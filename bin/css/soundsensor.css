@@ -1,0 +1,31 @@
+/** Styles used while interfacing to SoundSensor.swf **/
+div.flashOverlay {
+	opacity:    0.5; 
+	background: #000; 
+	width:      100%;
+	height:     100%; 
+	z-index:    10;
+	top:        0; 
+	left:       0; 
+	position:   fixed; 
+}
+
+div.flashObjectContainer {
+	position:absolute;
+	width:220px;
+	height:150px;
+	z-index:15;
+	top:50%;
+	left:50%;
+	margin:-110px 0 0 -75px;
+}
+
+#SoundSensor {
+	position:absolute;
+	width:220px;
+	height:150px;
+	z-index:20;
+	top:50%;
+	left:50%;
+	margin:-110px 0 0 -75px;
+}
