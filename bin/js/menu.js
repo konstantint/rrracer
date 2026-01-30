@@ -1,3 +1,7 @@
+/**
+ * Copyright 2013, Konstantin Tretyakov. http://rrracer.com/
+ */
+
 function MenuConfigItem(x, y, h, title, value, sound, action) {
 	this.title = title;
 	this.value = value;

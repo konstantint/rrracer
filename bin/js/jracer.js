@@ -1,4 +1,11 @@
 /**
+ * Substantial portions of the code in this file are by Jake Gordon.
+ * http://codeincomplete.com/projects/racer/v4.final.html.
+ *
+ * Modifications by Konstantin Tretyakov.
+ */
+
+/**
  * Method for moving cars along track.
  */
 function CarAI(maxSpeed, drawDistance) {
@@ -386,7 +393,7 @@ function JRacerScene(trackId, voiceId, fps) {
 	var keySlower      = false;
 	var pitch = -1;
 	
-	var voices = [[100, 200, 15], [200, 400, 20], [300, 600, 30]];
+	var voices = [[100, 200, 30], [200, 400, 50], [300, 600, 70]];
 	var minPitch = voices[voiceId][0];
 	var maxPitch = voices[voiceId][1];
 	var maxPitchError = voices[voiceId][2];
@@ -433,6 +440,9 @@ function JRacerScene(trackId, voiceId, fps) {
 			  }
 			  else if (pitch > expectedPitch){
 				  speed = Util.accelerate(speed, accel, dt);
+			  }
+			  else {
+				  speed = Util.accelerate(speed, decel, dt);
 			  }
 		  }
 	  }

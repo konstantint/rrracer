@@ -1,3 +1,10 @@
+/**
+ * Substantial portions of the code in this file are by Jake Gordon.
+ * http://codeincomplete.com/projects/racer/v4.final.html.
+ *
+ * Slight modifications by Konstantin Tretyakov.
+ */
+
 //=========================================================================
 // minimalist DOM helpers
 //=========================================================================

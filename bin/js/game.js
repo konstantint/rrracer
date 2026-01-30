@@ -1,3 +1,7 @@
+/**
+ * Copyright 2013, Konstantin Tretyakov. http://rrracer.com/
+ */
+
 //=========================================================================
 // http://paulirish.com/2011/requestanimationframe-for-smart-animating/
 //=========================================================================

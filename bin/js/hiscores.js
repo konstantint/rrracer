@@ -1,3 +1,7 @@
+/**
+ * Copyright 2013, Konstantin Tretyakov. http://rrracer.com/
+ */
+
 function getHiscores() {
 	if (!Dom.storage.hiscore) return [[], [], []];
 	else {

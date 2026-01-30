@@ -63,8 +63,20 @@
 		</div>
 	</div>
 	<div id="help_screen" class="text_screen">
-		<div style="text-align: center; width: 70%; margin: 70px auto;">
+		<div style="text-align: left; width: 600px; margin: 70px auto; font-size: 25px; line-height: 110%;">
+			<h1 style="font-weight: bold; margin-bottom: 15px; text-decoration: underline">How to play?</h1>
 			Hum like an engine to drive.<br/> Use the <b>arrow keys</b> to steer. <br/>Have fun.<br/><br/>
+			If you feel that your voice is not being detected properly, try moving to a quieter environment and/or changing the "Mic sensitivity" setting.<br/><br/>
+			<h1 style="font-weight: bold; margin-bottom: 15px; text-decoration: underline">About the project</h1>
+			<p>
+			This game is a single-weekend project implemented during the <a href="http://garage48.org/blogger/garage48-tallinn-2013-ideas-in-progress" target="_blank">Garage48</a> hackathon in Tallinn.
+			</p>
+			<p>
+			Coding by <a href="http://kt.era.ee">Konstantin</a>. Some imagery by <a href="http://veli.ee/">Veli</a>. 
+			The original <a href="http://codeincomplete.com/projects/racer/v4.final.html">Javascript racer</a> game by <a href="http://codeincomplete.com/about/">Jake Gordon</a>.
+			</p>
+		</div>
+		<div style="text-align: center; width: 500px; margin: 70px auto;">
 			<button id="ok_help" onclick="DIRECTOR.popScene(HelpScreen)" default="true">OK!</button>
 		</div>
 	</div>
@@ -160,5 +172,16 @@
   <audio id="v0" src="sounds/100-200.wav" preload="true"></audio>
   <audio id="v1" src="sounds/200-400.wav" preload="true"></audio>
   <audio id="v2" src="sounds/300-600.wav" preload="true"></audio>
+  
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-39601187-1', 'rrracer.com');
+  ga('send', 'pageview');
+
+</script>
  </body>
  </html>

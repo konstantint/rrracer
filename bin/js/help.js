@@ -1,3 +1,7 @@
+/**
+ * Copyright 2013, Konstantin Tretyakov. http://rrracer.com/
+ */
+
 function HelpScreen(width, height) {
 	this.update = function(dt) {	
 	}

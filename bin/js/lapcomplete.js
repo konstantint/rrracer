@@ -1,3 +1,7 @@
+/**
+ * Copyright 2013, Konstantin Tretyakov. http://rrracer.com/
+ */
+
 function LapCompleteScreen(trackId, time) {
 	var haveHiscore = false;
 	this.update = function(dt) {	
@@ -44,7 +48,7 @@ function LapCompleteScreen(trackId, time) {
 			var trackScores = scores[trackId];
 			trackScores.push([time, $("#player_name").val()])
 			trackScores.sort(function(a, b) { return a[0] - b[0]; });
-			trackScores.slice(0,10);
+			trackScores = trackScores.slice(0,10);
 			scores[trackId] = trackScores;
 			setHiscores(scores);
 		}

@@ -1,4 +1,7 @@
-// Code necessary for interfacing with SoundSensor.swf
+/**
+ * Copyright 2013, Konstantin Tretyakov. http://rrracer.com/
+ */
+// Interfacing with SoundSensor.swf
 
 function thisMovie(movieName) {
 	if (navigator.appName.indexOf("Microsoft") != -1) {
