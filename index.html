@@ -12,6 +12,16 @@
 				if (overlay) overlay.style.display = 'none';
 				setTimeout(function() { document.body.tabIndex = 0; document.body.focus();}, 300);
 			}
+
+			// Prevent events from passing through the overlay
+			window.addEventListener('load', function() {
+				var overlay = document.getElementById("flashOverlay");
+				if (overlay) {
+					['click', 'mousedown', 'mouseup', 'mousemove', 'touchstart', 'touchend', 'touchmove'].forEach(function(type) {
+						overlay.addEventListener(type, function(e) { e.stopPropagation(); }, false);
+					});
+				}
+			});
 		</script>
 		<script type="text/javascript" src="js/soundsensor.js"></script>
 		<link rel="stylesheet" type="text/css" href="css/soundsensor.css"/>
