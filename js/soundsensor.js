@@ -2,7 +2,7 @@
  * Modernized SoundSensor using Web Audio API
  * Replaces the original Flash-based implementation.
  * 
- * Copyright 2013-2024
+ * Copyright 2013-2026, Konstantin Tretykov.
  * 
  * Pitch detection algorithm adapted from:
  * https://alexanderell.is/posts/tuner/tuner.js
