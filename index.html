@@ -1,14 +1,16 @@
-﻿<html lang="en">
+<html lang="en">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>R-R-Racer</title>
 		<script type="text/javascript">
-			function checkStuff() {
-				alert(getSoundSensor().getPitch());
-			}
-
 			function microphoneReady() {
 				hideFlashOverlay();
+			}
+
+			function hideFlashOverlay() {
+				var overlay = document.getElementById("flashOverlay");
+				if (overlay) overlay.style.display = 'none';
+				setTimeout(function() { document.body.tabIndex = 0; document.body.focus();}, 300);
 			}
 		</script>
 		<script type="text/javascript" src="js/soundsensor.js"></script>
@@ -16,24 +18,18 @@
 		<link rel="stylesheet" type="text/css" href="css/common_veli.css"/>
 	 </head>
  <body>
-	 <!-- Begin soundsensor --->
-	 <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
-			 id="SoundSensor" width="216" height="138"
-			 codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab">
-		 <param name="movie" value="SoundSensor.swf" />
-		 <param name="quality" value="high" />
-		 <param name="bgcolor" value="#ffffff" />
-		 <param name="allowScriptAccess" value="always" />
-		 <embed src="SoundSensor.swf" quality="high" bgcolor="#ffffff"
-			 width="216" height="138" name="SoundSensor" align="middle"
-			 play="true" loop="false" quality="high" allowScriptAccess="always"
-			 type="application/x-shockwave-flash"
-			 pluginspage="http://www.macromedia.com/go/getflashplayer">
-		 </embed>
-	 </object>
-	 <div id="flashOverlay" class="flashOverlay">
-	 </div>
-	 <!-- End soundsensor -->
+	 <!-- Begin soundsensor replacement -->
+     <div id="flashOverlay" style="position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); z-index:9999; color:white; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;">
+        <!-- <h1 style="font-size: 40px; margin-bottom: 20px;">R-R-Racer</h1> -->
+        <p style="font-size: 20px; max-width: 600px; margin-bottom: 30px;">
+            This game is controlled by your voice.<br>
+            Hum like an engine to drive!
+        </p>
+        <button id="startAudioBtn" onclick="startSoundSensor()" style="font-size:24px; padding:15px 30px; cursor:pointer; background: #ffcc00; border: none; border-radius: 5px; color: black; font-weight: bold;">
+            Enable Microphone
+        </button>
+     </div>
+     <!-- End soundsensor replacement -->
 	 	 
 	 <!-- Begin jracer -->
   <div id='instructions'>
@@ -172,16 +168,5 @@
   <audio id="v0" src="sounds/100-200.wav" preload="true"></audio>
   <audio id="v1" src="sounds/200-400.wav" preload="true"></audio>
   <audio id="v2" src="sounds/300-600.wav" preload="true"></audio>
-  
-  <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-39601187-1', 'rrracer.com');
-  ga('send', 'pageview');
-
-</script>
  </body>
  </html>
