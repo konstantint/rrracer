@@ -15,7 +15,7 @@ var mediaStreamSource = null;
 var bufferLength = 2048;
 var dataBuffer = new Float32Array(bufferLength);
 var isInitialized = false;
-var rmsThreshold = 0.01; 
+var rmsThreshold = 0.001; // -60dB
 
 function initAudio() {
     if (isInitialized) return;
@@ -64,11 +64,6 @@ function getPitch() {
 }
 
 function setCutoffLevel(level) {
-    // Level comes from menu.js as -40, -33.3, -13
-    // We assume these are dB values.
-    // We convert to linear RMS.
-    
-    // Safety check to handle potential positive values or 0 sensibly
     if (level > 0) level = -level; 
     if (level === 0) level = -100; 
 

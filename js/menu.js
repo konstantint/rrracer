@@ -73,7 +73,8 @@ function MenuScreen(width, height, dingId, clickId, starterId) {
 
 	var micSensitivity = 1;
 	var micSensitivities = ['Low', 'Normal', 'High'];
-	var micSensitivityLevels = [-40, -33.3, -13];
+	var micSensitivityLevels = [-40, -60, -100];
+	setCutoffLevel(micSensitivityLevels[micSensitivity]);
 	
 	// Create menu items
 	var menuItems = [];
