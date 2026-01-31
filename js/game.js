@@ -29,6 +29,17 @@ function GameDirector(canvas, fps) {
 	this.switchToScene = function(newScene) {
 		if (this.scene) this.scene.exit(this);
 		this.scene = newScene;
+		
+		// Handle mobile controls visibility
+		var mobileControls = Dom.get('mobile-controls');
+		if (mobileControls) {
+			if (window.JRacerScene && newScene instanceof window.JRacerScene) {
+				mobileControls.style.display = 'block';
+			} else {
+				mobileControls.style.display = 'none';
+			}
+		}
+
 		if (this.scene) this.scene.enter(this);
 	}
 	
